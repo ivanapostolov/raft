@@ -27,22 +27,18 @@ void sortBackwards(int arr[], int n) {
 int getMinCapacity(int arr[], int n, int k) {
     bool passed[n];
 
-    for(int i = 0; i < n; i++) {
-        passed[i] = false;
-    }
-
     int init = arr[0];
 
-    while(true) {
-        for(int i = 0; i < n; i++) {
+    while (true) {
+        for (int i = 0; i < n; i++) {
             passed[i] = false;
         }
 
-        for(int i = 0; i < k; i++) {
+        for (int i = 0; i < k; i++) {
             int sum = 0;
 
-            for(int j = 0; j < n; j++) {
-                if(sum + arr[j] <= init && !passed[j]) {
+            for (int j = 0; j < n; j++) {
+                if (sum + arr[j] <= init && !passed[j]) {
                     sum += arr[j];
                     passed[j] = true;
                 }
@@ -50,10 +46,10 @@ int getMinCapacity(int arr[], int n, int k) {
         }
 
         for(int i = 0; i < n; i++) {
-            if(!passed[i]) {
+            if (!passed[i]) {
                 break;
             }
-            if(i == n-1 && passed[i]) {
+            else if (i == n-1) {
                 return init;
             }
         }
@@ -66,12 +62,11 @@ int getMinCapacity(int arr[], int n, int k) {
 
 int main() {
     int n, k;
-    std::cin >> n;
-    std::cin >> k;
+    std::cin >> n >> k;
 
     int* a = new int[n];
 
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         std::cin >> a[i];
     }
 
